@@ -2,10 +2,10 @@
 
 ## General info and Why
 
-In-game ability to manage some world settings are very short, so I created a few tools for myself and decided to share it with anyone who may need it.
-Each world you play in Space Engineers has two files (`Sandbox_config.sbc`, `Sandbox.sbc`) with most of settings. This files actually just XML-files. They are lays in save-game folder. Path (on Windows) usually something like that:
-`c:\Users\<username>\AppData\Roaming\SpaceEngineers\Saves\<long_ID>\<save_name>\`
-You can change some settings through in-game UI, but manually you have some more variations.
+In-game ability to manage some world settings are very short, so I created a few tools for myself and decided to share it with anyone who may need it.<br>
+Each world you play in Space Engineers has two files (`Sandbox_config.sbc`, `Sandbox.sbc`) with most of settings. This files actually just XML-files. They are lays in save-game folder. Path (on Windows) usually something like that:<br>
+`c:\Users\<username>\AppData\Roaming\SpaceEngineers\Saves\<long_ID>\<save_name>\`<br>
+You can change some settings through in-game UI, but manually you have some more variations.<br>
 All mods info which you apply on world stored here too.
 
 ## zce-se can do
@@ -25,8 +25,8 @@ All mods info which you apply on world stored here too.
 
 ## How to use
 
-Copy `Sandbox_config.sbc` or/and `Sandbox.sbc` files to `_in` folder (by default) near this script.
-Run script (main.py). Like `uv run main.py` or `python main.py` or whatever.
+Copy `Sandbox_config.sbc` or/and `Sandbox.sbc` files to `_in` folder (by default) near this script.<br>
+Run script (main.py). Like `uv run main.py` or `python main.py` or whatever.<br>
 Script will generate modlists (`Sandbox_config_out.txt` or/and `Sandbox_out.txt` files) in format (by default):
 
 ```txt
