@@ -10,16 +10,23 @@ from settings import (
     TARGET_EXT,
 )
 
+MSG = {
+    'ERR_FILE': 'Something wrong with file {filename}.',
+    'ERR_XML': 'Invalid XML format in {filename}.',
+    'ERR_PATH': 'Can\'t write to {filename}. Check path.',
+    'ERR_UNKNOWN': 'Something went wrong.',
+    'GOOD': 'You can check result'
+}
 
 def get_mods_data(filename):
     try:
         tree = etree.parse(filename)
     except IOError:
-        print(f'Something wrong with file {filename}.')
-        return
+        print(MSG['ERR_FILE'].format(filename=filename))
     except etree.XMLSyntaxError:
-        print(f'Invalid XML format in {filename}.')
-        return
+        print(MSG['ERR_XML'].format(filename=filename))
+    except Exception:
+        print(MSG['ERR_UNKNOWN'])
 
     root = tree.getroot()
     cur_root = root.find(ROOT_NODE)
@@ -34,7 +41,7 @@ def put_to_txt(filename, payload, mode='w'):
         with open(filename, mode, encoding='utf-8') as f:
             f.write(payload)
     except FileNotFoundError:
-        print(f"Can't write to {filename}. Check path.")
+        print(MSG['ERR_PATH'].format(filename=filename))
         raise
 
 
@@ -48,7 +55,7 @@ def main():
         for line in get_mods_data(f'{PATH_IN}/{f}'):
             put_to_txt(path_out, line, 'a')
 
-    print('You cat check result')
+    print(MSG['GOOD'])
 
 
 if __name__ == '__main__':
