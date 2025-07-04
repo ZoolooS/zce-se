@@ -58,7 +58,7 @@ def put_to_txt(filename, payload, mode='w'):
         raise
 
 
-def main():
+def process_files():
     for f in SRC_FILES:
         if not Path(PATH_IN).is_dir():
             print(MSG['ERR_IN_PATH'].format(filename=PATH_IN))
@@ -84,6 +84,9 @@ def main():
 
         print(MSG['GOOD'].format(filename=curr_f_path_out))
 
+
+def main():
+    process_files()
     print(MSG['END'])
 
 
