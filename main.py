@@ -36,8 +36,10 @@ def get_mods_data(filename):
         return
     except etree.XMLSyntaxError:
         print(MSG['ERR_XML'].format(filename=filename))
+        return
     except Exception:
         print(MSG['ERR_UNKNOWN'])
+        return
 
     root = tree.getroot()
     cur_root = root.find(ROOT_NODE)
