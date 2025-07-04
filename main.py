@@ -1,5 +1,14 @@
 from lxml import etree
-from settings import *
+from settings import (
+    ROOT_NODE,
+    ID_NODE_NAME,
+    NAME_ATTR,
+    SRC_FILES,
+    PATH_IN,
+    PATH_OUT,
+    TARGET_SUFFIX,
+    TARGET_EXT,
+)
 
 
 def get_mods_data(filename):
