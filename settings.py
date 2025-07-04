@@ -10,3 +10,5 @@ SRC_FILES = (  # SE XML-files to search for
 )
 TARGET_SUFFIX = '_out'  # suffix for modlist-files
 TARGET_EXT = '.txt'  # extension for modlist-files
+
+MODLIST_LINE = '-:|: {mod_name} :|: {mod_id}\n'  # line format for modlist-file

@@ -1,4 +1,6 @@
 from lxml import etree
+from pathlib import Path
+
 from settings import (
     ROOT_NODE,
     ID_NODE_NAME,
@@ -8,15 +10,18 @@ from settings import (
     PATH_OUT,
     TARGET_SUFFIX,
     TARGET_EXT,
+    MODLIST_LINE,  # have {mod_name}, {mod_id} vars
 )
+
 
 MSG = {
     'ERR_FILE': 'Something wrong with file {filename}.',
     'ERR_XML': 'Invalid XML format in {filename}.',
     'ERR_PATH': 'Can\'t write to {filename}. Check path.',
     'ERR_UNKNOWN': 'Something went wrong.',
-    'GOOD': 'You can check result'
+    'GOOD': 'You can check result.'
 }
+
 
 def get_mods_data(filename):
     try:
@@ -33,7 +38,7 @@ def get_mods_data(filename):
 
     for el in cur_root:
         id_node = el.find(ID_NODE_NAME)
-        yield f'-:|: {el.attrib[NAME_ATTR]} :|: {id_node.text}\n'
+        yield MODLIST_LINE.format(mod_name=el.attrib[NAME_ATTR], mod_id=id_node.text)
 
 
 def put_to_txt(filename, payload, mode='w'):
@@ -47,12 +52,12 @@ def put_to_txt(filename, payload, mode='w'):
 
 def main():
     for f in SRC_FILES:
-        path_out = f'{PATH_OUT}/{f[:-4]}{TARGET_SUFFIX}{TARGET_EXT}'
+        path_out = Path(PATH_OUT, f[:-4] + TARGET_SUFFIX + TARGET_EXT)
         try:
             put_to_txt(path_out, '')
         except FileNotFoundError:
             return
-        for line in get_mods_data(f'{PATH_IN}/{f}'):
+        for line in get_mods_data(Path(PATH_IN, f)):
             put_to_txt(path_out, line, 'a')
 
     print(MSG['GOOD'])
