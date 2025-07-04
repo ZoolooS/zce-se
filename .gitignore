@@ -10,5 +10,7 @@ wheels/
 .venv
 
 # Project files
-Sandbox*
-_Sandbox*
+_in/*
+!_in/put_here_sbc_files.txt
+_out/*
+!_out/modlist_files_will_be_here.txt
